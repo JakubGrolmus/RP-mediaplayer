@@ -1,0 +1,17 @@
+[Unit]
+Description=Lokalni media prehravac (mpv)
+After=multi-user.target sound.target local-fs.target
+Wants=sound.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/bin/mediaplayer.py
+Restart=always
+RestartSec=3
+User=vmorp1
+SupplementaryGroups=video render audio input
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
